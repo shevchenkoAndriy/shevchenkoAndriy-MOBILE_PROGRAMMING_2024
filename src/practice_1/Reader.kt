@@ -11,4 +11,15 @@ class Reader {
            }
        }
    }
+
+    fun parseInt (label: String): Int {
+        while (true) {
+            print(label)
+            val input = readlnOrNull()
+            val integerNumber: Int? = try { input?.toInt() } catch (e: NumberFormatException) { null }
+            if (integerNumber != null) {
+                return integerNumber
+            }
+        }
+    }
 }
