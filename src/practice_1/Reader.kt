@@ -12,7 +12,7 @@ class Reader {
        }
    }
 
-    fun parseInt (label: String): Int {
+    private fun parseInt (label: String): Int {
         while (true) {
             print(label)
             val input = readlnOrNull()

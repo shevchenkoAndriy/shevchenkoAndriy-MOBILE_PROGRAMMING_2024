@@ -34,5 +34,35 @@ class ChatBot {
         }
     }
 
+    fun checkProgrammingKnowledge(tests: List<Map<String, Any>> ) {
+        println("Let's test your programming knowledge.")
+        val reader = Reader()
+        var step = 1
+        while (step <= tests.size) {
+           val test = tests[step - 1]
+
+            println(test["question"])
+            val options = test["options"] as List<*>
+            printAllOptions(options)
+            val userAnswer = reader.parsePositiveInt("> ")
+
+            val isUserPassTest = test["answer"] == userAnswer
+
+            if (!isUserPassTest) {
+                println("Please, try again.")
+                continue
+            }
+
+            println("Completed, have a nice day!")
+            step++
+        }
+        println("Congratulations, have a nice day!")
+    }
+
+    private fun printAllOptions(options: List<*>) {
+        for (i in options.indices){
+            println("${i + 1}. ${options[i]}")
+        }
+    }
 
 }
