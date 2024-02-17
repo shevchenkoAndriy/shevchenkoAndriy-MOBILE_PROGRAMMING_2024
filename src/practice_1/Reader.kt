@@ -5,8 +5,8 @@ class Reader {
    fun readName (label: String): String {
        while (true) {
            print(label)
-           val userName = readlnOrNull()
-           if (userName != null){
+           val userName = readlnOrNull()?.trim()
+           if (userName != null && userName != ""){
                return userName
            }
        }
