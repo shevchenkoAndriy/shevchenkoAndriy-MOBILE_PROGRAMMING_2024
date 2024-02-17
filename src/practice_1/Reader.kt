@@ -22,4 +22,13 @@ class Reader {
             }
         }
     }
+
+    fun parsePositiveInt (label: String): Int {
+        while (true) {
+            val positiveNumber = this.parseInt(label)
+            if (positiveNumber > 0) {
+                return positiveNumber
+            }
+        }
+    }
 }
