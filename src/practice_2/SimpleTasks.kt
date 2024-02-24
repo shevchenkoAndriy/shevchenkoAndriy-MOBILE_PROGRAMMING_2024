@@ -104,4 +104,25 @@ class SimpleTasks {
         println("############## TASK:${taskNumber} ################")
     }
 
+    /**
+     * Finds the two largest integers in the given integer array.
+     *
+     * @param integerArray The array of integers to search.
+     */
+    fun task6(integerArray: IntArray) {
+        showTaskHead(6)
+
+        if (integerArray.isEmpty()) {
+            println(emptyList<Int>())
+            return
+        }
+
+        val listOfInt = integerArray.toMutableList()
+        listOfInt.sortDescending()
+
+        val biggestIntList = listOfInt.subList(0, minOf(2, listOfInt.size))
+        
+        println(biggestIntList)
+    }
+
 }
