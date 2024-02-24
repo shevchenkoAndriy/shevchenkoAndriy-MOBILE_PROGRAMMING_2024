@@ -41,4 +41,17 @@ class SimpleTasks {
         println(number * 5)
     }
 
+    /**
+     * Return the negative of the given positive number.
+     * For example, if the input is 1, the output is -1; for -5, return -5.
+     *
+     * @param label The label to prompt the user for input.
+     */
+    fun task3(label: String = "> ") {
+        val reader = Reader()
+        val number = reader.parsePositiveInt(label)
+
+        println(number * -1)
+    }
+
 }
