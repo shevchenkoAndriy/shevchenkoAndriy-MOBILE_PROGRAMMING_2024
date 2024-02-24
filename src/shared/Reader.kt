@@ -1,4 +1,4 @@
-package practice_1
+package shared
 
 class Reader {
 
