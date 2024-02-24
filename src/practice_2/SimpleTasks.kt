@@ -12,7 +12,7 @@ class SimpleTasks {
      *
      * @param label The label to prompt the user for input.
      */
-    fun task1(label: String = "> ") {
+    fun task1 (label: String = "> ") {
         val reader = Reader()
         val number = reader.parseInt(label)
 
@@ -23,5 +23,22 @@ class SimpleTasks {
 
         println("Odd")
     }
-}
 
+    /**
+     * Multiply the given number by 4 if it is even, and by 5 otherwise.
+     *
+     * @param label The label to prompt the user for input.
+     */
+    fun task2 (label: String = "> ") {
+        val reader = Reader()
+        val number = reader.parseInt(label)
+
+        if (number % 2 == 0) {
+            println(number * 4)
+            return
+        }
+
+        println(number * 5)
+    }
+
+}
