@@ -14,6 +14,7 @@ class SimpleTasks {
      * @param label The label to prompt the user for input.
      */
     fun task1 (label: String = "> ") {
+        showTaskHead(1)
         val reader = Reader()
         val number = reader.parseInt(label)
 
@@ -31,6 +32,7 @@ class SimpleTasks {
      * @param label The label to prompt the user for input.
      */
     fun task2 (label: String = "> ") {
+        showTaskHead(2)
         val reader = Reader()
         val number = reader.parseInt(label)
 
@@ -49,6 +51,7 @@ class SimpleTasks {
      * @param label The label to prompt the user for input.
      */
     fun task3 (label: String = "> ") {
+        showTaskHead(3)
         val reader = Reader()
         val number = reader.parsePositiveInt(label)
 
@@ -61,6 +64,7 @@ class SimpleTasks {
      * @param label The label to prompt the user for input.
      */
     fun task4 (label: String = "> ") {
+        showTaskHead(4)
         val reader = Reader()
         val yearOfBirth = reader.parsePositiveInt(label)
         val age = calculateAge(yearOfBirth)
@@ -77,6 +81,27 @@ class SimpleTasks {
     private fun calculateAge (year: Int): Int {
         val currentYear = Year.now().value
         return currentYear - year
+    }
+
+    /**
+     * Finds the minimum integer in the given integer array.
+     *
+     * @param integerArray The array of integers to search.
+     */
+    fun task5 (integerArray: IntArray) {
+        showTaskHead(5)
+        var minNumber = integerArray.first()
+        for (number in integerArray) {
+            if (number < minNumber) {
+                minNumber = number
+            }
+        }
+
+        println(minNumber)
+    }
+
+    private fun showTaskHead (taskNumber: Int) {
+        println("############## TASK:${taskNumber} ################")
     }
 
 }
