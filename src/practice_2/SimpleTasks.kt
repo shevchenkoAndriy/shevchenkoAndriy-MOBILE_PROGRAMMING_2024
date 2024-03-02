@@ -197,4 +197,23 @@ class SimpleTasks {
         println(word.substring(middleStartIndex, middleStartIndex + 2 ))
     }
 
+    /**
+     * Generates and prints a multiplication table of size 'n x n',
+     * where 'n' is the given integer.
+     * Each element in the table represents the product of its row and column indices.
+     */
+    fun task10() {
+        showTaskHead(10)
+        val n = 3
+        val rows = mutableListOf<MutableList<Int>>()
+        for (i in 1 .. n) {
+            val row = mutableListOf<Int>()
+            for (j in 1 .. n) {
+                row.add(i * j)
+            }
+            rows.add(row)
+        }
+        println(rows)
+    }
+
 }

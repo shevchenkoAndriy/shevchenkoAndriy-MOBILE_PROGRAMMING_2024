@@ -14,4 +14,5 @@ fun main () {
     simpleTasks.task7(intArray)
     simpleTasks.task8("Ukraine")
     simpleTasks.task9("student")
+    simpleTasks.task10()
 }
