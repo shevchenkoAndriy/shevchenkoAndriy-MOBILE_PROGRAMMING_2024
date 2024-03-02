@@ -1,4 +1,4 @@
-package practice_1
+package shared
 
 class Reader {
 
@@ -12,7 +12,7 @@ class Reader {
        }
    }
 
-    private fun parseInt (label: String): Int {
+    fun parseInt (label: String): Int {
         while (true) {
             print(label)
             val input = readlnOrNull()

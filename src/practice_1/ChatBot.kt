@@ -1,5 +1,7 @@
 package practice_1
 
+import shared.Reader
+
 class ChatBot {
     init {
         println("Hello! My name is DICT_Bot.")
