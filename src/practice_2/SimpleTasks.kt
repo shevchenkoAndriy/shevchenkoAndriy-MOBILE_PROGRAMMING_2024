@@ -171,4 +171,30 @@ class SimpleTasks {
         println(amountOfVowels)
     }
 
+    /**
+     * Prints the middle character(s) of the given word.
+     * If the word has an odd length, prints the middle character.
+     * If the word has an even length, prints the two middle characters.
+     *
+     * @param word The word to extract the middle character(s) from.
+     */
+    fun task9(word: String) {
+        showTaskHead(9)
+
+        if (word.length < 3) {
+            println(word)
+            return
+        }
+
+        if (word.length % 2 != 0) {
+            val middleIndex = (word.length / 2)
+            println(word[middleIndex])
+            return
+        }
+
+        val middleStartIndex = (word.length.toDouble() / 2).toInt()
+
+        println(word.substring(middleStartIndex, middleStartIndex + 2 ))
+    }
+
 }
