@@ -3,6 +3,8 @@ package practice_2
 import shared.Reader
 import java.time.Year
 
+val VOWELS = listOf('a', 'e', 'i', 'o', 'u', 'y')
+
 /**
  * Contains simple tasks.
  */
@@ -151,6 +153,22 @@ class SimpleTasks {
             }
         }
         println(listOf(positiveNumbersAmount, negativeNumbersSum))
+    }
+
+    /**
+     * Counts the number of vowels in the given word.
+     * Vowels are defined as the characters 'a', 'e', 'i', 'o', and 'u' (both lowercase and uppercase).
+     *
+     * @param word The word to count vowels in.
+     */
+    fun task8(word: String) {
+        showTaskHead(8)
+        var amountOfVowels = 0
+        for (letter in word) {
+            if (VOWELS.contains(letter.lowercaseChar())) amountOfVowels++
+        }
+
+        println(amountOfVowels)
     }
 
 }
