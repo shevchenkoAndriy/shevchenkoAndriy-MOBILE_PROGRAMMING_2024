@@ -125,4 +125,32 @@ class SimpleTasks {
         println(biggestIntList)
     }
 
+    /**
+     * Counts the number of positive integers and calculates the sum of negative integers in the given integer array.
+     * Returns a list containing the count of positive integers and the sum of negative integers.
+     *
+     * @param integerArray The array of integers to process.
+     */
+    fun task7(integerArray: IntArray?) {
+        showTaskHead(7)
+
+        if (integerArray == null || integerArray.isEmpty()) {
+            println(emptyList<Int>())
+            return
+        }
+
+        var positiveNumbersAmount = 0
+        var negativeNumbersSum = 0
+        for (number in integerArray) {
+            if (number > 0) {
+                positiveNumbersAmount++
+            }
+
+            if (number < 0) {
+                negativeNumbersSum += number
+            }
+        }
+        println(listOf(positiveNumbersAmount, negativeNumbersSum))
+    }
+
 }
