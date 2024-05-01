@@ -4,14 +4,95 @@ import shared.Reader
 import kotlin.math.min
 import kotlin.math.truncate
 
-class CoffeeMachine {
+class CoffeeMachine (
+    private var numberOfWater: Int = 0,
+    private var numberOfMilk: Int = 0,
+    private var numberOfBeans: Int = 0,
+    private var numberOfCups: Int = 0,
+    private var money: Int = 0
+) {
     private val reader = Reader()
-    private var numberOfWater = 0
-    private var numberOfMilk = 0
-    private var numberOfBeans = 0
+    private var drinks = listOf(
+        Drink(DrinkType.ESPRESSO.value, 4),
+        Drink(DrinkType.LATTE.value, 7),
+        Drink(DrinkType.CAPPUCCINO.value, 6)
+    )
 
     fun start() {
-        showNumberOfAvailableDrinks()
+        while (true) {
+            print("Write action (buy, fill, take): > ")
+            val option = readln()
+            when (option) {
+                "buy" -> buyDrink()
+                "fill" -> fillMachine()
+                "take" -> takeMoney()
+                "exit" -> {
+                    return
+                }
+                else -> {
+                    continue
+                }
+            }
+        }
+    }
+
+    private fun takeMoney() {
+        println("I gave you $money")
+        money = 0
+    }
+
+    private fun fillMachine() {
+        numberOfWater += reader.parsePositiveInt(
+            "Write how many ml of water you want to add: > "
+        )
+        numberOfMilk += reader.parsePositiveInt(
+            "Write how many ml of milk you want to add: > "
+        )
+        numberOfBeans += reader.parsePositiveInt(
+            "Write how many grams of coffee beans you want to add: > "
+        )
+        numberOfCups += reader.parsePositiveInt(
+            "Write how many disposable coffee cups you want to add: > "
+        )
+        showCoffeeMachineState()
+    }
+
+    private fun showCoffeeMachineState() {
+        println(
+            """
+                The coffee machine has:
+                $numberOfWater of water
+                $numberOfMilk of milk
+                $numberOfBeans of coffee beans
+                $numberOfCups of disposable cups
+                $money of money
+            """.trimIndent()
+        )
+    }
+
+    private fun buyDrink() {
+        val option = reader.parsePositiveInt(
+            "What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino: > "
+        )
+
+        val drink = drinks[option - 1]
+
+        val ingredients = getDrinkIngredients(drink.name)
+
+        val numberOfAvailableDrinks = calcNumberOfAvailableDrinks(ingredients)
+
+        if (numberOfAvailableDrinks < 1) {
+            println("I have enough resources, making you a coffee!")
+            return
+        }
+
+        numberOfWater -= ingredients.water
+        numberOfMilk -= ingredients.milk
+        numberOfBeans -= ingredients.beans
+        numberOfCups -= 1
+        money += drink.price
+
+        showCoffeeMachineState()
     }
 
     private fun showOrderIngredients() {
@@ -67,6 +148,30 @@ class CoffeeMachine {
     }
 
     private fun getDrinkIngredients(name: String): Ingredients {
+        when (name) {
+            DrinkType.ESPRESSO.value -> {
+                return Ingredients(
+                    water = 250,
+                    milk = 0,
+                    beans = 16
+                )
+            }
+            DrinkType.LATTE.value -> {
+                return Ingredients(
+                    water = 350,
+                    milk = 75,
+                    beans = 20
+                )
+            }
+            DrinkType.CAPPUCCINO.value -> {
+                return Ingredients(
+                    water = 200,
+                    milk = 100,
+                    beans = 12
+                )
+            }
+        }
+
         if (name == "Coffee") {
             return Ingredients(
                 water = 200,
@@ -74,6 +179,7 @@ class CoffeeMachine {
                 beans = 15
             )
         }
+
         throw Error("Unknown drink")
     }
 
